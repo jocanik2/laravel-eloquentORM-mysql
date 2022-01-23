@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeNameToUsernameInUsersTable extends Migration
+class ChangeCreatedAtToDateBoughtInBoughtBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class ChangeNameToUsernameInUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('name', 'username');
-
-        }); 
+        Schema::table('bought_books', function (Blueprint $table) {
+            $table->renameColumn('created_at', 'date_bought');
+        });
     }
 
     /**
@@ -26,7 +25,7 @@ class ChangeNameToUsernameInUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('bought_books', function (Blueprint $table) {
             //
         });
     }
