@@ -14,7 +14,11 @@ class AuthorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'full_name' => $this->faker->name(),
+            'birth_date' => $this->faker->date(),
+            'country' => $this->faker->country(),
+
+            
         ];
     }
 }
