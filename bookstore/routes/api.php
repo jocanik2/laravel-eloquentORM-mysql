@@ -21,11 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::post('/authors', [AuthorController::class, 'store']);
-Route::resource('users', UserController::class);
+//Route::resource('users', UserController::class);
+Route::get('/users', [UserController::class, 'index']);
 Route::get('/books', [BookController::class, 'index']);
 Route::post('/books', [BookController::class, 'store']);
 Route::get('/authors/search/{full_name}', [AuthorController::class, 'search']);
-Route::delete('/books/destroy/{book_id}', [BookController::class, 'destroy']);
+Route::delete('/users/destroy/{user_id}', [UserController::class, 'destroy']);
 
 
 
