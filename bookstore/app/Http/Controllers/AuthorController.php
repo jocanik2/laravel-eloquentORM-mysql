@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Author;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
-class UserController extends Controller
+class AuthorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return Author::all();
     }
 
     /**
@@ -34,28 +35,36 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    
     {
-        //
+        $request->validate([
+            'full_name'=>'required',
+            'birth_date'=>'required',
+            'country'=>'required'
+
+        ]);
+        return Author::create($request->all());
+   
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function show($user_id )
+    public function show(Author $author)
     {
-        return User::find($user_id);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Author $author)
     {
         //
     }
@@ -64,10 +73,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Author $author)
     {
         //
     }
@@ -75,11 +84,11 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function search($name)
     {
-        //
+        return Author::where('full_name', 'like', '%'.$name.'%')->get();
     }
 }

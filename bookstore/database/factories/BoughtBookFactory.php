@@ -15,10 +15,10 @@ class BoughtBookFactory extends Factory
      */
     public function definition()
     {
-        $users = User::pluck('user_id')->toArray();
+        $users = User::pluck('id')->toArray();
         $books = Book::pluck('book_id')->toArray();
         return [
-            'user_id'=>$this->faker->randomElement($users),
+            'id'=>$this->faker->randomElement($users),
             'book_id'=>$this->faker->randomElement($books)
            
         ];

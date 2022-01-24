@@ -13,7 +13,7 @@ class BoughtBookSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\BoughtBook::factory(30)->create();
+        \App\Models\BoughtBook::factory(2)->create();
 
     }
 }

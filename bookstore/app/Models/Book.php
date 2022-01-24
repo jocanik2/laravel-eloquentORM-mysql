@@ -24,4 +24,9 @@ class Book extends Model
     public function users(){
         $this->belongsToMany(User::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'book_id';
+    }
 }
