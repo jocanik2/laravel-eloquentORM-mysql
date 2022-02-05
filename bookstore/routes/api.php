@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,17 +20,26 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+
+
 Route::get('/authors', [AuthorController::class, 'index']);
-Route::post('/authors', [AuthorController::class, 'store']);
 //Route::resource('users', UserController::class);
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/books', [BookController::class, 'index']);
-Route::post('/books', [BookController::class, 'store']);
+
 Route::get('/authors/search/{full_name}', [AuthorController::class, 'search']);
-Route::delete('/users/destroy/{user_id}', [UserController::class, 'destroy']);
+
+
 
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+    Route::delete('/users/destroy/{user_id}', [UserController::class, 'destroy']);
+    Route::post('/books', [BookController::class, 'store']);
+    Route::post('/authors', [AuthorController::class, 'store']);
+
 });
